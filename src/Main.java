@@ -42,7 +42,24 @@ public class Main {
 
         // Calculate and display the BMI
         double BMI = weight / (height * height);
-        System.out.printf("You have a BMI index of: %.2f", BMI);
+        System.out.printf("You have a BMI index of: %.2f \n", BMI);
+        bmiMeaning(BMI);
         scan.close();
+
+    }
+
+    public static void bmiMeaning(double bmi){
+        if(bmi < 18.5){
+            System.out.println("You are underweight.");
+        }
+        else if (bmi <= 24.9){
+            System.out.println("You are a healthy weight.");
+        }
+        else if (bmi <= 29.9){
+            System.out.println("You are overweight.");
+        }
+        else{
+            System.out.println("You are obese.");
+        }
     }
 }
