@@ -68,13 +68,19 @@ public class Main {
         }
 
         // Calculate and display the BMI
-        double BMI = weight / (height * height);
+        double BMI = calculateBMI(height, weight, measurementMode);
         System.out.printf("You have a BMI index of: %.2f \n", BMI);
         bmiMeaning(BMI);
         scan.close();
 
     }
 
+    public static double calculateBMI(double height, double weight, int measurementMode){
+        if(measurementMode == 1){
+            return (weight/(height*height));
+        }
+        return ((weight/(height*height)) * 703);
+    }
 
     public static void bmiMeaning(double bmi){
         if(bmi < 18.5){
