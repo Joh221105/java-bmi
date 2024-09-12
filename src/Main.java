@@ -7,16 +7,31 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         double weight = 0;
         double height = 0;
+        int measurementMode = 0;
 
-        // Loop until valid weight is entered
         while (true) {
             try {
-                System.out.println("Enter your weight in kilograms: ");
-                weight = scan.nextDouble();
-                if (weight < 0 || weight > 500) {
-                    System.out.println("Please enter a valid weight between 0 and 500.");
-                } else {
-                    break;
+                System.out.println("Which measurement mode would you like to input (Type 1 or 2)");
+                System.out.println("1. Kilograms and meters");
+                System.out.println("2. Pounds and inches");
+                measurementMode = scan.nextInt();
+                if(measurementMode == 1){
+                    System.out.println("Enter your weight in kilograms: ");
+                    weight = scan.nextDouble();
+                    if (weight < 0 || weight > 500) {
+                        System.out.println("Please enter a valid weight between 0 and 500.");
+                    } else {
+                        break;
+                    }
+                }
+                else if(measurementMode == 2){
+                    System.out.println("Enter your weight in pounds: ");
+                    weight = scan.nextDouble();
+                    if (weight < 0 || weight > 1000) {
+                        System.out.println("Please enter a valid weight between 0 and 1000.");
+                    } else {
+                        break;
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a numerical value.");
@@ -27,13 +42,25 @@ public class Main {
         // Loop until valid height is entered
         while (true) {
             try {
-                System.out.println("Enter your height in meters: ");
-                height = scan.nextDouble();
-                if (height <= 0 || height > 3) {
-                    System.out.println("Please enter a valid height between 0 and 3 meters.");
-                } else {
-                    break;
+                if (measurementMode == 1){
+                    System.out.println("Enter your height in meters: ");
+                    height = scan.nextDouble();
+                    if (height <= 0 || height > 3) {
+                        System.out.println("Please enter a valid height between 0 and 3 meters.");
+                    } else {
+                        break;
+                    }
                 }
+                else if (measurementMode == 2){
+                    System.out.println("Enter your height in inches: ");
+                    height = scan.nextDouble();
+                    if (height <= 0 || height > 120) {
+                        System.out.println("Please enter a valid height between 0 and 120 inches.");
+                    } else {
+                        break;
+                    }
+                }
+
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a numerical value.");
                 scan.next(); // Clear the invalid input
@@ -47,6 +74,7 @@ public class Main {
         scan.close();
 
     }
+
 
     public static void bmiMeaning(double bmi){
         if(bmi < 18.5){
